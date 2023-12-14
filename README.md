@@ -19,3 +19,8 @@ extension=zip
 DocumentRoot "C:/xampp/htdocs"
 <Directory "C:/xampp/htdocs">
 ```
+
+Initialize new CodeIgniter4 appstarter project file using Composer (requires prior XAMPP config. above):
+```
+composer create-project codeigniter4/appstarter project-folder-name
+```
