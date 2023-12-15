@@ -76,3 +76,15 @@ class Book extends BaseController {
 }
 ?>
 ```
+
+Creating database memo:
+- Title: ci4_db
+- Table name: books
+-id: int, pk, ai
+-title: varchar(50)
+-author: varchar(50)
+-publisher: varchar(50)
+-total_pages: int
+-book_cover: varchar(50)
+-created_at: datetime
+-updated_at: datetime
