@@ -43,3 +43,36 @@ Test the CodeIgniter4 project:
 - Locate to the directory where "spark" file is present
 - Invoke command "php spark serve" without double-quotes
 - CTRL + Click the http:// address or fill in your browser (by default) "http://localhost:8080"
+
+Spark serve direction:
+- App.php : baseURL
+- Routes.php : get('/', 'Home::index');
+- Home.php : index(); view('welcome_message');
+- welcome_message.php page.
+
+Database settings used:
+- .env : database.default properties (if this uncommented, Database.php will be ignored)
+- Database.php : public array $default = []
+
+URI Controller:
+- Saved on app/Controllers/ directory
+- example page:
+-- http://example.com/book/newest/10
+-- example is the domain name, book is the controller class name, with function named 'newest' and 10th edition as the arguments
+
+Creating new URI controller example:
+- Create php file on app/Controllers/ dir.
+```php
+<?php
+
+namespace App\Controllers; //as your current dir.
+
+//using your custom class name (as file name) and extending from BaseController as its base
+class Book extends BaseController {
+    //using index function
+    public function index() {
+        return view('welcome_message');
+    }
+}
+?>
+```

@@ -9,4 +9,9 @@ class Home extends BaseController
         // from Routes.php redirect here
         return view('welcome_message');
     }
+
+    // placeholder
+    public function listData(){
+
+    }
 }
