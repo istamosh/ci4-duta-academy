@@ -33,11 +33,13 @@ VSCode PHP environment variables settings:
 - Change to look like this: "php.validate.executablePath": "C:/xampp/php/php.exe",
 - Save
 
-(Optional) If wanted to start the project from scratch other than this already made project, initialize new CodeIgniter4 appstarter project file using Composer on desired empty directory (requires prior XAMPP config. above):
+(First time only, important.) If working on other devices, please install Composer using default settings (all users, without proxy, etc.), Initialize new CodeIgniter4 appstarter project file using Composer on desired empty directory (requires prior XAMPP config. above):
 ```
 composer create-project codeigniter4/appstarter project-folder-name
 ```
+then copy the vendor/ directory into the cloned project directory.
 
 Test the CodeIgniter4 project:
 - Locate to the directory where "spark" file is present
 - Invoke command "php spark serve" without double-quotes
+- CTRL + Click the http:// address or fill in your browser (by default) "http://localhost:8080"
