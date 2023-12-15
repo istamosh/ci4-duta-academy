@@ -88,3 +88,18 @@ Creating database memo:
 -book_cover: varchar(50)
 -created_at: datetime
 -updated_at: datetime
+
+DB Query Command:
+```sql
+CREATE TABLE `books` (
+    `id` INT NOT NULL AUTO_INCREMENT , 
+    `title` VARCHAR(50) NOT NULL , 
+    `author` VARCHAR(50) NOT NULL , 
+    `publisher` VARCHAR(50) NOT NULL , 
+    `total_pages` INT NOT NULL , 
+    `book_cover` VARCHAR(50) NOT NULL , 
+    `created_at` DATETIME NOT NULL , 
+    `updated_at` DATETIME NOT NULL , 
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB;
+```

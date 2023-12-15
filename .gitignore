@@ -43,7 +43,7 @@ $RECYCLE.BIN/
 # as it poses a security risk.
 
 # .env is modified for reference
-#.env
+.env
 .vagrant
 Vagrantfile
 
