@@ -5,10 +5,12 @@
 
 <!-- define content section -->
 <?= $this->section('content') ?>
-<hr>
-<strong>Book List:</strong> <br>
-- Atomic Habits <br>
-- The Subtle Art of Not Giving A F*ck <br>
-- Meditations <br>
-<hr>
+    <hr>
+    <h1>Welcome to Our Book List!</h1>
+    <strong>Monthly Best Selling:</strong> <br>
+    - Atomic Habits <br>
+    - The Subtle Art of Not Giving A F*ck <br>
+    - Meditations <br>
+    - The Inner Citadel <br>
+    <hr>
 <?= $this->endsection() ?>

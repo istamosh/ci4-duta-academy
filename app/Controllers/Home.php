@@ -14,4 +14,9 @@ class Home extends BaseController
     public function listData(){
 
     }
+
+    // referenced from Routes.php
+    public function bookList(){
+        return view('book_list');
+    }
 }

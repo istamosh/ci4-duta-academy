@@ -420,7 +420,8 @@
                   ><span class="hide-menu">Charts</span></a
                 >
               </li>
-              <li class="sidebar-item">
+              <!-- deletion starting from below -->
+              <!-- <li class="sidebar-item">
                 <a
                   class="sidebar-link waves-effect waves-dark sidebar-link"
                   href="widgets.html"
@@ -624,7 +625,8 @@
                   ><i class="mdi mdi-cloud-download font-20 me-2"></i>Download
                   Free</a
                 >
-              </li>
+              </li> -->
+              <!-- ends deletion. -->
             </ul>
           </nav>
           <!-- End Sidebar navigation -->
