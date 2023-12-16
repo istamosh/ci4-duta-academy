@@ -112,6 +112,9 @@ nbactions.xml
 nb-configuration.xml
 .nb-gradle/
 
+# custom exclusion bootstrap5 public templates dist
+!public/templates/matrix-admin-bootstrap5/dist*
+
 # Sublime Text
 *.tmlanguage.cache
 *.tmPreferences.cache
