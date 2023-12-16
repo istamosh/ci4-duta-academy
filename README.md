@@ -103,3 +103,15 @@ CREATE TABLE `books` (
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
 ```
+
+(Optional) using Live Server:
+- Invoke command:
+```
+php spark serve
+```
+- Start Live Server, then Live Server Web Extension
+- By default, fill Actual Server Address as:
+```
+http://localhost:8080/
+```
+- Reload the page with above address
