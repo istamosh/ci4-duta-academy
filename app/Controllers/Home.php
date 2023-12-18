@@ -6,8 +6,7 @@ class Home extends BaseController
 {
     public function index(): string
     {
-        // from Routes.php redirect here
-        return view('welcome_message');
+        return view('home');
     }
 
     // placeholder
@@ -15,8 +14,8 @@ class Home extends BaseController
 
     }
 
-    // referenced from Routes.php
-    public function bookList(){
-        return view('book_list');
+    // original ci4 welcome message is placed here
+    public function index2(){
+        return view('welcome_message');
     }
 }

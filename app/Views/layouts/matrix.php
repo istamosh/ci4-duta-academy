@@ -20,7 +20,8 @@
       content="Matrix Admin Lite Free Version is powerful and clean admin dashboard template, inpired from Bootstrap Framework"
     />
     <meta name="robots" content="noindex,nofollow" />
-    <title>Matrix Admin Lite Free Versions Template by WrapPixel</title>
+    <!-- custom title -->
+    <title>Our Book List</title>
     <!-- Favicon icon -->
     <link
       rel="icon"
@@ -71,7 +72,8 @@
             <!-- ============================================================== -->
             <!-- Logo -->
             <!-- ============================================================== -->
-            <a class="navbar-brand" href="index.html">
+            <!-- changing logo click so it redirects to home -->
+            <a class="navbar-brand" href="/home">
               <!-- Logo icon -->
               <b class="logo-icon ps-2">
                 <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
@@ -87,8 +89,9 @@
               <!-- Logo text -->
               <span class="logo-text ms-2">
                 <!-- dark Logo text -->
+                <!-- custom logo text -->
                 <img
-                  src="./templates/matrix-admin-bootstrap5/assets/images/logo-text.png"
+                  src="./templates/matrix-admin-bootstrap5/assets/images/logo-store-text.png"
                   alt="homepage"
                   class="light-logo"
                 />
@@ -147,18 +150,19 @@
                   aria-expanded="false"
                 >
                   <span class="d-none d-md-block"
-                    >Create New <i class="fa fa-angle-down"></i
+                    >Manage Books <i class="fa fa-angle-down"></i
                   ></span>
                   <span class="d-block d-md-none"
                     ><i class="fa fa-plus"></i
                   ></span>
                 </a>
+                <!-- changing drop down to CRUD activity -->
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="/book/new">New Book</a></li>
+                  <li><a class="dropdown-item" href="#">Placeholder</a></li>
                   <li><hr class="dropdown-divider" /></li>
                   <li>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="#">Placeholder</a>
                   </li>
                 </ul>
               </li>
@@ -189,16 +193,16 @@
               <!-- Comment -->
               <!-- ============================================================== -->
               <li class="nav-item dropdown">
-                <a
+                <!-- <a
                   class="nav-link dropdown-toggle"
                   href="#"
                   id="navbarDropdown"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
-                >
+                > 
                   <i class="mdi mdi-bell font-24"></i>
-                </a>
+                </a> -->
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="#">Action</a></li>
                   <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -215,7 +219,7 @@
               <!-- Messages -->
               <!-- ============================================================== -->
               <li class="nav-item dropdown">
-                <a
+                <!-- <a
                   class="nav-link dropdown-toggle waves-effect waves-dark"
                   href="#"
                   id="2"
@@ -224,7 +228,7 @@
                   aria-expanded="false"
                 >
                   <i class="font-24 mdi mdi-comment-processing"></i>
-                </a>
+                </a> -->
                 <ul
                   class="
                     dropdown-menu dropdown-menu-end
@@ -330,7 +334,7 @@
               <!-- User profile and search -->
               <!-- ============================================================== -->
               <li class="nav-item dropdown">
-                <a
+                <!-- <a
                   class="
                     nav-link
                     dropdown-toggle
@@ -350,7 +354,7 @@
                     class="rounded-circle"
                     width="31"
                   />
-                </a>
+                </a> -->
                 <ul
                   class="dropdown-menu dropdown-menu-end user-dd animated"
                   aria-labelledby="navbarDropdown"
@@ -403,21 +407,23 @@
           <nav class="sidebar-nav">
             <ul id="sidebarnav" class="pt-4">
               <li class="sidebar-item">
+                <!-- /home, all controls refer to Routes.php -->
                 <a
                   class="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="index.html"
+                  href="/home" 
                   aria-expanded="false"
                   ><i class="mdi mdi-view-dashboard"></i
                   ><span class="hide-menu">Dashboard</span></a
                 >
               </li>
               <li class="sidebar-item">
+                <!-- /book for book list -->
                 <a
                   class="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="charts.html"
+                  href="/book"
                   aria-expanded="false"
                   ><i class="mdi mdi-chart-bar"></i
-                  ><span class="hide-menu">Charts</span></a
+                  ><span class="hide-menu">Book List</span></a
                 >
               </li>
               <!-- deletion starting from below -->
