@@ -19,3 +19,4 @@ $routes->get('/', 'Home');
 // makes localhost/book is designated at Book.php
 $routes->add('book', 'Book');
 $routes->add('home', 'Home');
+$routes->add('/book/new', 'Book::insert');

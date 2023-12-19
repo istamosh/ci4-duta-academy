@@ -3,6 +3,7 @@
 <!-- changed all relpath from ../dist/ to ./templates/matrix-admin-bootstrap5/dist/ -->
 <!-- changed all relpath from ../assets/ to ./templates/matrix-admin-bootstrap5/assets/ -->
 <!-- emptying class="container-fluid" and then filled by: $this->renderSection('content') -->
+<!-- updated: when using relpath (./) causing misaligned target assets when the page has more than one dir (localhost/book/new will refer to /book/templates/... instead of /templates/...), changed by just using (/) -->
 
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -21,18 +22,18 @@
     />
     <meta name="robots" content="noindex,nofollow" />
     <!-- custom title -->
-    <title>Our Book List</title>
+    <title>Book Store</title>
     <!-- Favicon icon -->
     <link
       rel="icon"
       type="image/png"
       sizes="16x16"
-      href="./templates/matrix-admin-bootstrap5/assets/images/favicon.png"
+      href="/templates/matrix-admin-bootstrap5/assets/images/favicon.png"
     />
     <!-- Custom CSS -->
-    <link href="./templates/matrix-admin-bootstrap5/assets/libs/flot/css/float-chart.css" rel="stylesheet" />
+    <link href="/templates/matrix-admin-bootstrap5/assets/libs/flot/css/float-chart.css" rel="stylesheet" />
     <!-- Custom CSS -->
-    <link href="./templates/matrix-admin-bootstrap5/dist/css/style.min.css" rel="stylesheet" />
+    <link href="/templates/matrix-admin-bootstrap5/dist/css/style.min.css" rel="stylesheet" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -79,7 +80,7 @@
                 <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                 <!-- Dark Logo icon -->
                 <img
-                  src="./templates/matrix-admin-bootstrap5/assets/images/logo-icon.png"
+                  src="/templates/matrix-admin-bootstrap5/assets/images/logo-icon.png"
                   alt="homepage"
                   class="light-logo"
                   width="25"
@@ -91,7 +92,7 @@
                 <!-- dark Logo text -->
                 <!-- custom logo text -->
                 <img
-                  src="./templates/matrix-admin-bootstrap5/assets/images/logo-store-text.png"
+                  src="/templates/matrix-admin-bootstrap5/assets/images/logo-store-text.png"
                   alt="homepage"
                   class="light-logo"
                 />
@@ -100,7 +101,7 @@
               <!-- <b class="logo-icon"> -->
               <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
               <!-- Dark Logo icon -->
-              <!-- <img src="./templates/matrix-admin-bootstrap5/assets/images/logo-text.png" alt="homepage" class="light-logo" /> -->
+              <!-- <img src="/templates/matrix-admin-bootstrap5/assets/images/logo-text.png" alt="homepage" class="light-logo" /> -->
 
               <!-- </b> -->
               <!--End Logo icon -->
@@ -349,7 +350,7 @@
                   aria-expanded="false"
                 >
                   <img
-                    src="./templates/matrix-admin-bootstrap5/assets/images/users/1.jpg"
+                    src="/templates/matrix-admin-bootstrap5/assets/images/users/1.jpg"
                     alt="user"
                     class="rounded-circle"
                     width="31"
@@ -684,8 +685,10 @@
         <!-- footer -->
         <!-- ============================================================== -->
         <footer class="footer text-center">
-          All Rights Reserved by Matrix-admin. Designed and Developed by
-          <a href="https://www.wrappixel.com">WrapPixel</a>.
+          All Rights Reserved by Matrix-admin. Designed by
+          <a href="https://www.wrappixel.com">WrapPixel</a>
+          and Developed by
+          <a href="https://github.com/istamosh">istamosh</a>.
         </footer>
         <!-- ============================================================== -->
         <!-- End footer -->
@@ -701,27 +704,27 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="./templates/matrix-admin-bootstrap5/assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="/templates/matrix-admin-bootstrap5/assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="./templates/matrix-admin-bootstrap5/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="./templates/matrix-admin-bootstrap5/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-    <script src="./templates/matrix-admin-bootstrap5/assets/extra-libs/sparkline/sparkline.js"></script>
+    <script src="/templates/matrix-admin-bootstrap5/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/templates/matrix-admin-bootstrap5/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="/templates/matrix-admin-bootstrap5/assets/extra-libs/sparkline/sparkline.js"></script>
     <!--Wave Effects -->
-    <script src="./templates/matrix-admin-bootstrap5/dist/js/waves.js"></script>
+    <script src="/templates/matrix-admin-bootstrap5/dist/js/waves.js"></script>
     <!--Menu sidebar -->
-    <script src="./templates/matrix-admin-bootstrap5/dist/js/sidebarmenu.js"></script>
+    <script src="/templates/matrix-admin-bootstrap5/dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
-    <script src="./templates/matrix-admin-bootstrap5/dist/js/custom.min.js"></script>
+    <script src="/templates/matrix-admin-bootstrap5/dist/js/custom.min.js"></script>
     <!--This page JavaScript -->
-    <!-- <script src="./templates/matrix-admin-bootstrap5/dist/js/pages/dashboards/dashboard1.js"></script> -->
+    <!-- <script src="/templates/matrix-admin-bootstrap5/dist/js/pages/dashboards/dashboard1.js"></script> -->
     <!-- Charts js Files -->
-    <script src="./templates/matrix-admin-bootstrap5/assets/libs/flot/excanvas.js"></script>
-    <script src="./templates/matrix-admin-bootstrap5/assets/libs/flot/jquery.flot.js"></script>
-    <script src="./templates/matrix-admin-bootstrap5/assets/libs/flot/jquery.flot.pie.js"></script>
-    <script src="./templates/matrix-admin-bootstrap5/assets/libs/flot/jquery.flot.time.js"></script>
-    <script src="./templates/matrix-admin-bootstrap5/assets/libs/flot/jquery.flot.stack.js"></script>
-    <script src="./templates/matrix-admin-bootstrap5/assets/libs/flot/jquery.flot.crosshair.js"></script>
-    <script src="./templates/matrix-admin-bootstrap5/assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
-    <script src="./templates/matrix-admin-bootstrap5/dist/js/pages/chart/chart-page-init.js"></script>
+    <script src="/templates/matrix-admin-bootstrap5/assets/libs/flot/excanvas.js"></script>
+    <script src="/templates/matrix-admin-bootstrap5/assets/libs/flot/jquery.flot.js"></script>
+    <script src="/templates/matrix-admin-bootstrap5/assets/libs/flot/jquery.flot.pie.js"></script>
+    <script src="/templates/matrix-admin-bootstrap5/assets/libs/flot/jquery.flot.time.js"></script>
+    <script src="/templates/matrix-admin-bootstrap5/assets/libs/flot/jquery.flot.stack.js"></script>
+    <script src="/templates/matrix-admin-bootstrap5/assets/libs/flot/jquery.flot.crosshair.js"></script>
+    <script src="/templates/matrix-admin-bootstrap5/assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+    <script src="/templates/matrix-admin-bootstrap5/dist/js/pages/chart/chart-page-init.js"></script>
   </body>
 </html>
