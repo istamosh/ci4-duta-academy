@@ -19,4 +19,6 @@ $routes->get('/', 'Home');
 // makes localhost/book is designated at Book.php
 $routes->add('book', 'Book');
 $routes->add('home', 'Home');
-$routes->add('/book/new', 'Book::insert');
+$routes->add('/book/new', 'Book::formInsert');
+// adding save book routes, derived from form_insert.php
+$routes->add('/book/save', 'Book::save');

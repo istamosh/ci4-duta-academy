@@ -5,12 +5,18 @@
 
 <!-- define content section -->
 <?= $this->section('content') ?>
-    <hr>
-    <h1>Welcome to Our Book List!</h1>
-    <strong>Monthly Best Selling:</strong> <br>
-    - Atomic Habits <br>
-    - The Subtle Art of Not Giving A F*ck <br>
-    - Meditations <br>
-    - The Inner Citadel <br>
-    <hr>
+
+<?php
+if (session()->getFlashdata('message')):
+?>
+    <div class="alert alert-primary" role="alert">
+        <!-- invoke this particular code from Book.php -->
+        <?= session()->getFlashdata('message')?>
+    </div>
+<?php
+endif;
+?>
+
+<h1>Book List:</h1>
+
 <?= $this->endsection() ?>
