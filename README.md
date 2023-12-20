@@ -93,9 +93,9 @@ DB Query Command:
 ```sql
 CREATE TABLE `books` (
     `id` INT NOT NULL AUTO_INCREMENT , 
-    `title` VARCHAR(50) NOT NULL , 
-    `author` VARCHAR(50) NOT NULL , 
-    `publisher` VARCHAR(50) NOT NULL , 
+    `title` VARCHAR(250) NOT NULL , 
+    `author` VARCHAR(100) NOT NULL , 
+    `publisher` VARCHAR(100) NOT NULL , 
     `total_pages` INT NOT NULL , 
     `book_cover` VARCHAR(50) NOT NULL , 
     `created_at` DATETIME NOT NULL , 

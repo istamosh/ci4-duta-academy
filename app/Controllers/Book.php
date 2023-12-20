@@ -38,7 +38,7 @@
             ])) {
 
                 // one-time error message
-                session()->setFlashdata('error', 'Save error, check your input again!');
+                session()->setFlashdata('error', 'Save error, make sure every form is filled and there is no duplicate title!');
                 // then return back to form with latest input values (must be defined inside input form too)
                 return redirect()->to('/book/new')->withInput();
             };
