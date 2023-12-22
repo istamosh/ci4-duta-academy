@@ -21,12 +21,12 @@
     <div class="row">
         <div class="col">
             <!-- /book/save will be routed to Book.php->save() -->
-            <form action="/book/save" method="post">
+            <form class="needs-validation" action="/book/save" method="post">
                 <!-- cross site request forgery - hidden input field -->
                 <?= csrf_field(); ?>
 
                 <div class="row mb-3">
-                    <label for="title" class="col-sm-2 col-form-label">Book Title</label>
+                    <label for="title" class="col-sm-4 col-form-label">Book Title</label>
                     <div class="col-sm-10">
                         <!-- if data validation has error, points to the error sector form -->
                         <!-- using data validator component as $validation from Book.php -->
@@ -43,7 +43,7 @@
 
                         <!-- feedback from corresponding form -->
                         <div id="titleFeedback" class="invalid-feedback">
-                            <?= $validation->getError('title') ?>
+                            This field is empty. <?= $validation->getError('title') ?>
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
 
                         <!-- feedback from corresponding form -->
                         <div id="authorFeedback" class="invalid-feedback">
-                            <?= $validation->getError('author') ?>
+                            This field is empty. <?= $validation->getError('author') ?>
                         </div>
                     </div>
                 </div>
@@ -79,7 +79,7 @@
 
                         <!-- feedback from corresponding form -->
                         <div id="publisherFeedback" class="invalid-feedback">
-                            <?= $validation->getError('publisher') ?>
+                            This field is empty. <?= $validation->getError('publisher') ?>
                         </div>
                     </div>
                 </div>
@@ -97,7 +97,7 @@
 
                         <!-- feedback from corresponding form -->
                         <div id="total_pagesFeedback" class="invalid-feedback">
-                            <?= $validation->getError('total_pages') ?>
+                            This field is empty or not a number. <?= $validation->getError('total_pages') ?>
                         </div>
                     </div>
                 </div>
@@ -115,103 +115,35 @@
 
                         <!-- feedback from corresponding form -->
                         <div id="book_coverFeedback" class="invalid-feedback">
-                            <?= $validation->getError('book_cover') ?>
+                            This field is empty. <?= $validation->getError('book_cover') ?>
                         </div>
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Save Data</button>
+                <button id="button" type="submit" class="btn btn-primary">Save Data</button>
             </form>
 
         </div>
     </div>
 
-    <!-- testing section from Bootstrap 5 page -->
-    <!-- <form class="row g-3 needs-validation" novalidate>
-        <div class="col-md-4">
-            <label for="validationCustom01" class="form-label">First name</label>
-            <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
-            <div class="valid-feedback">
-                Looks good!
-            </div>
-        </div>
-        <div class="col-md-4">
-            <label for="validationCustom02" class="form-label">Last name</label>
-            <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
-            <div class="valid-feedback">
-                Looks good!
-            </div>
-        </div>
-        <div class="col-md-4">
-            <label for="validationCustomUsername" class="form-label">Username</label>
-            <div class="input-group has-validation">
-                <span class="input-group-text" id="inputGroupPrepend">@</span>
-                <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
-                <div class="invalid-feedback">
-                    Please choose a username.
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <label for="validationCustom03" class="form-label">City</label>
-            <input type="text" class="form-control" id="validationCustom03" required>
-            <div class="invalid-feedback">
-                Please provide a valid city.
-            </div>
-        </div>
-        <div class="col-md-3">
-            <label for="validationCustom04" class="form-label">State</label>
-            <select class="form-select" id="validationCustom04" required>
-                <option selected disabled value="">Choose...</option>
-                <option>...</option>
-            </select>
-            <div class="invalid-feedback">
-                Please select a valid state.
-            </div>
-        </div>
-        <div class="col-md-3">
-            <label for="validationCustom05" class="form-label">Zip</label>
-            <input type="text" class="form-control" id="validationCustom05" required>
-            <div class="invalid-feedback">
-                Please provide a valid zip.
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                <label class="form-check-label" for="invalidCheck">
-                    Agree to terms and conditions
-                </label>
-                <div class="invalid-feedback">
-                    You must agree before submitting.
-                </div>
-            </div>
-        </div>
-        <div class="col-12">
-            <button class="btn btn-primary" type="submit">Submit form</button>
-        </div>
-    </form> -->
-    <!-- <script>
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (function () {
-            'use strict'
-
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.querySelectorAll('.needs-validation')
-
-            // Loop over them and prevent submission
-            Array.prototype.slice.call(forms)
-                .forEach(function (form) {
-                    form.addEventListener('submit', function (event) {
-                        if (!form.checkValidity()) {
-                            event.preventDefault()
-                            event.stopPropagation()
-                        }
-
-                        form.classList.add('was-validated')
-                    }, false)
-                })
-        })()
-    </script> -->
+    <script>
+        // store all desired class into one variable
+        // check forms for every typing inside either one of them
+        // if any form is not invalid, disable button and validate forms with error output for every forms available
+        document.getElementById("button").disabled = true;
+        (function(){
+            'use strict';
+            const forms = document.querySelectorAll('.needs-validation');
+            Array.prototype.slice.call(forms).forEach(function(form){
+                form.addEventListener('input', function(event){
+                    !form.checkValidity() ?
+                        document.getElementById("button").disabled = true :
+                        document.getElementById("button").disabled = false;
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        })
+        ();
+    </script>
 
 <?= $this->endsection() ?>

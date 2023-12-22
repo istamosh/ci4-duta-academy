@@ -9,7 +9,7 @@
 <?php
 if (session()->getFlashdata('message')):
 ?>
-    <div class="alert alert-primary" role="alert">
+    <div class="alert alert-success" role="alert">
         <!-- invoke this particular code from Book.php -->
         <?= session()->getFlashdata('message')?>
     </div>

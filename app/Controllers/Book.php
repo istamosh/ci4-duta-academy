@@ -33,12 +33,12 @@
                 'title' => 'required|is_unique[books.title]',
                 'author' => 'required',
                 'publisher' => 'required',
-                'total_pages' => 'required',
+                'total_pages' => 'required|is_natural_no_zero',
                 'book_cover' => 'required'
             ])) {
 
                 // one-time error message
-                session()->setFlashdata('error', 'Save error, make sure every form is filled and there is no duplicate title!');
+                session()->setFlashdata('error', 'Save error, make sure there are no empty field, zero page, or duplicate title!');
                 // then return back to form with latest input values (must be defined inside input form too)
                 return redirect()->to('/book/new')->withInput();
             };
