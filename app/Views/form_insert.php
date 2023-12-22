@@ -38,6 +38,7 @@
                             id="id_title" 
                             value="<?= old("title") ?>"
                             autofocus
+                            required
                         >
 
                         <!-- feedback from corresponding form -->
@@ -55,6 +56,7 @@
                             name="author" 
                             id="id_author"
                             value="<?= old("author") ?>"
+                            required
                         >
 
                         <!-- feedback from corresponding form -->
@@ -72,6 +74,7 @@
                             name="publisher" 
                             id="id_publisher"
                             value="<?= old("publisher") ?>"
+                            required
                         >
 
                         <!-- feedback from corresponding form -->
@@ -89,6 +92,7 @@
                             name="total_pages" 
                             id="id_total_pages"
                             value="<?= old("total_pages") ?>"
+                            required
                         >
 
                         <!-- feedback from corresponding form -->
@@ -106,6 +110,7 @@
                             name="book_cover" 
                             id="id_book_cover"
                             value="<?= old("book_cover") ?>"
+                            required
                         >
 
                         <!-- feedback from corresponding form -->
@@ -122,7 +127,7 @@
     </div>
 
     <!-- testing section from Bootstrap 5 page -->
-    <form class="row g-3 needs-validation" novalidate>
+    <!-- <form class="row g-3 needs-validation" novalidate>
         <div class="col-md-4">
             <label for="validationCustom01" class="form-label">First name</label>
             <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
@@ -185,8 +190,8 @@
         <div class="col-12">
             <button class="btn btn-primary" type="submit">Submit form</button>
         </div>
-    </form>
-    <script>
+    </form> -->
+    <!-- <script>
         // Example starter JavaScript for disabling form submissions if there are invalid fields
         (function () {
             'use strict'
@@ -207,6 +212,6 @@
                     }, false)
                 })
         })()
-    </script>
+    </script> -->
 
 <?= $this->endsection() ?>
