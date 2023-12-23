@@ -3,7 +3,14 @@
 
     class Book extends BaseController {
         public function index() {
-            return view('book_list');
+            // define how the book database model works, then fetch the book data
+            // and then sends that to be displayed in book list page
+            $bookData = $this->databaseModel->findAll();
+            $data = [
+                'bookData' => $bookData
+            ];
+
+            return view('book_list', $data);
         }
         public function formInsert() {
             // data validator before commiting to database using CI4 validation component
