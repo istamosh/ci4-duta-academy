@@ -14,7 +14,14 @@
         //protected $useAutoIncrement = true; // for ID management, no need if the table already has AutoIncrement set to true
         //protected $returnType = 'array';
         //protected $useSoftDeletes = true;
-        protected $allowedFields = ['title', 'author', 'publisher', 'total_pages', 'book_cover'];
+        protected $allowedFields =
+        [
+            'title', 
+            'author', 
+            'publisher', 
+            'total_pages', 
+            'book_cover'
+        ];
         protected $useTimestamps = true; // will fills and take control of created_at and updated_at columns
         //protected $createdField = 'created_at'; // handled by ci4
         //protected $updatedField = 'updated_at'; // handled by ci4

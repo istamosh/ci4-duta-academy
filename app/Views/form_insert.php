@@ -27,7 +27,8 @@
                     <h4 class="card-title">Insert New Book</h4>
 
                     <!-- /book/save will be routed to Book.php->save() -->
-                    <form class="needs-validation" action="/book/save" method="post">
+                    <!-- added input encryption type -->
+                    <form class="needs-validation" action="/book/save" method="post" enctype="multipart/form-data">
                         <!-- cross site request forgery - hidden input field -->
                         <?= csrf_field(); ?>
 
@@ -110,18 +111,19 @@
                         <div class="row-mb-3">
                             <label for="book_cover" class="col-sm-2 col-form-label">Book Cover</label>
                             <div class="col-sm-10">
+                                <!-- change book cover from text input to file input -->
                                 <input 
-                                    type="text" 
-                                    class="form-control <?= ($validation->hasError('book_cover')) ? 'is-invalid' : ''; ?>" 
+                                    type="file" 
+                                    class="form-control" 
                                     name="book_cover" 
                                     id="id_book_cover"
-                                    value="<?= old("book_cover") ?>"
+                                    value=""
                                     required
                                 >
 
                                 <!-- feedback from corresponding form -->
                                 <div id="book_coverFeedback" class="invalid-feedback">
-                                    This field is empty. <?= $validation->getError('book_cover') ?>
+                                    This field is empty.
                                 </div>
                             </div>
                         </div>

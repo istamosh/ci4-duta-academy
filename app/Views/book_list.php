@@ -37,6 +37,7 @@ endif;
                     <thead>
                         <tr>
                             <th scope="column"> <strong>No.</strong> </th>
+                            <th scope="column"> <strong>Preview</strong></th>
                             <th scope="column"> <strong>Title</strong> </th>
                             <th scope="column"> <strong>Author</strong> </th>
                             <th scope="column"> <strong>Publisher</strong> </th>
@@ -51,6 +52,14 @@ endif;
 
                         <tr>
                             <th scope="row"> <strong><?= $no; ?>.</strong> </th>
+                            <td>
+                                <img 
+                                    src="/blob_images/<?= $data['book_cover']; ?>" 
+                                    alt="book_cover"
+                                    class="img-fluid rounded-start"
+                                    width="100px"
+                                >
+                            </td>
                             <td> <?= $data['title']; ?> </td>                    
                             <td> <?= $data['author']; ?> </td>
                             <td> <?= $data['publisher']; ?> </td>

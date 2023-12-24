@@ -131,3 +131,6 @@ nb-configuration.xml
 /phpunit*.xml
 /.phpunit.*.cache
 
+# Database blob images (the folder itself and one empty file inside it are excluded)
+/public/blob_images/*
+!/public/blob_images/index

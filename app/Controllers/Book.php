@@ -36,31 +36,45 @@
 
         // for inserting new book into db
         public function save() {
-            // need to validate datas before inserting into db to prevent error on db
-            // book title is unique tag, no two or more entry can be the same
-            // if it is not fulfilled
-            if (!$this->validate([
+
+            $validationRule =
+            [
                 'title' => 'required|is_unique[books.title]',
                 'author' => 'required',
                 'publisher' => 'required',
-                'total_pages' => 'required|is_natural_no_zero',
-                'book_cover' => 'required'
-            ])) {
+                'total_pages' => 'required|is_natural_no_zero'
+                ,'book_cover' =>
+                [
+                    'rules' => 'uploaded[book_cover]|is_image[book_cover]|max_size[book_cover,1024]|max_dims[book_cover,4096,4096]|mime_in[book_cover,image/jpg,image/jpeg,image/png]|ext_in[book_cover,jpg,jpeg,png]'
+                ]
+            ];
 
+            // need to validate datas before inserting into db to prevent error on db
+            // book title is unique tag, no two or more entry can be the same
+            // if it is not fulfilled
+            if (!$this->validate($validationRule)) {
                 // one-time error message
                 session()->setFlashdata('error', 'Save error, make sure there are no empty field, zero page, or duplicate title!');
                 // then return back to form with latest input values (must be defined inside input form too)
                 return redirect()->to('/book/new')->withInput();
             };
 
+            // fetch image file entry (blob)
+            $fileUpload = $this->request->getFile('book_cover');
+            // and generate random name for uploaded file
+            $randomName = $fileUpload->getRandomName();
+            // and then move to /public/blob_images dir (excluded for different machines because of local db)
+            $fileUpload->move('blob_images', $randomName);
+
             // using CI4 base model save function with Key Value Pair array into our custom database model
+            // while book_cover save only the file name
             $this->databaseModel->save(
                 [
                     'title' => $this->request->getVar('title'),
                     'author' => $this->request->getVar('author'),
                     'publisher' => $this->request->getVar('publisher'),
                     'total_pages' => $this->request->getVar('total_pages'),
-                    'book_cover' => $this->request->getVar('book_cover')
+                    'book_cover' => $randomName
                 ]
             );
 
