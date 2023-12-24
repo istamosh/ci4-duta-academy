@@ -22,3 +22,7 @@ $routes->add('home', 'Home');
 $routes->add('/book/new', 'Book::formInsert');
 // adding save book routes, derived from form_insert.php
 $routes->add('/book/save', 'Book::save');
+// adding edit book routes derived from book_list.php
+$routes->add('/book/edit', 'Book::update');
+// adding database updating process
+$routes->add('/book/execute_update', 'Book::execute_update');

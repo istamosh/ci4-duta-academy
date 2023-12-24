@@ -22,5 +22,25 @@
         //protected $validationRules = [];
         //protected $validationMessages = [];
         //protected $skipValidation = false;
+
+        // get the given id then give those back by picking the first occurence
+        // 'where' is a ci4 query command for finding an element inside a database
+        public function fetchBookData($param) {
+            return $this->where([
+                'id' => $param
+            ])->first();
+        }
+
+        // function engine for updating book entry by ID (function invoked from Book.php)
+        public function updateBookData($bookId, $bookDetails) {
+            // using database query/command builder to access and modify the entries, by pointing which $table wants to be altered on
+            $queryBuilder = $this->db->table($this->table);
+
+            // find where the requested id is located (books->id)
+            $queryBuilder->where('id', $bookId);
+
+            // then execute the database 'Update' function using this code, and return
+            return $queryBuilder->update($bookDetails);
+        }
     }
 ?>

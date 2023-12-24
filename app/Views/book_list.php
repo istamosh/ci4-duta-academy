@@ -10,8 +10,15 @@
 if (session()->getFlashdata('message')):
 ?>
     <div class="alert alert-success" role="alert">
-        <!-- invoke this particular code from Book.php -->
+        <!-- invoke this created book alert message from Book.php -->
         <?= session()->getFlashdata('message')?>
+    </div>
+<?php 
+elseif (session()->getFlashdata('updates')):
+?>
+    <div class="alert alert-info" role="alert">
+        <!-- invoke this updated book alert message from Book.php -->
+        <?= session()->getFlashdata('updates')?>
     </div>
 <?php
 endif;
@@ -33,7 +40,7 @@ endif;
                             <th scope="column"> <strong>Title</strong> </th>
                             <th scope="column"> <strong>Author</strong> </th>
                             <th scope="column"> <strong>Publisher</strong> </th>
-                            <th scope="column"> <strong>Option</strong> </th>
+                            <th scope="column"> <strong>Action</strong> </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -47,10 +54,20 @@ endif;
                             <td> <?= $data['title']; ?> </td>                    
                             <td> <?= $data['author']; ?> </td>
                             <td> <?= $data['publisher']; ?> </td>
+
+                            <!-- set page detail address based on their respective ID's on database -->
                             <td>
-                                <a href="/book/details/<?= $data['id'] ?>">
-                                    Detail
-                                </a>
+                                <form action="/book/edit" method="post" class="inline-data">
+                                    <?= csrf_field() ?>
+
+                                    <input 
+                                        type="hidden" 
+                                        value="<?= $data['id'] ?>" 
+                                        name="id_for_editing"
+                                    >
+
+                                    <button type="submit" class="btn btn-primary">Edit</button>
+                                </form>
                             </td>
                         </tr>
 
