@@ -57,6 +57,7 @@ endif;
 
                             <!-- set page detail address based on their respective ID's on database -->
                             <td>
+                                <!-- update book button -->
                                 <form action="/book/edit" method="post" class="inline-data">
                                     <?= csrf_field() ?>
 
@@ -67,6 +68,23 @@ endif;
                                     >
 
                                     <button type="submit" class="btn btn-primary">Edit</button>
+                                </form>
+
+                                <!-- delete button -->
+                                <form action="/book/delete" method="post" class="inline-data">
+                                    <?= csrf_field() ?>
+                                    <input 
+                                        type="hidden" 
+                                        name="id_for_deletion"
+                                        value="<?= $data['id'] ?>"
+                                    >
+                                    <button
+                                        type="submit"
+                                        class="btn btn-danger"
+                                        onclick="return confirm('Are you sure?')"
+                                    >
+                                        Delete
+                                    </button>
                                 </form>
                             </td>
                         </tr>

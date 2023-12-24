@@ -24,5 +24,7 @@ $routes->add('/book/new', 'Book::formInsert');
 $routes->add('/book/save', 'Book::save');
 // adding edit book routes derived from book_list.php
 $routes->add('/book/edit', 'Book::update');
-// adding database updating process
-$routes->add('/book/execute_update', 'Book::execute_update');
+// adding database updating process (from update_book.php)
+$routes->add('/book/execute_update', 'Book::executeUpdate');
+// adding database delete routes (from book_list.php)
+$routes->add('/book/delete', 'Book::delete');

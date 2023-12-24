@@ -29,7 +29,7 @@
                 <div class="card-body">
                     <h4 class="card-title">Update Book</h4>
 
-                    <!-- /book/execute_update will be routed to Book.php->execute_update() -->
+                    <!-- /book/execute_update will be routed to Book.php->executeUpdate() -->
                     <form class="needs-validation" action="/book/execute_update" method="post">
                         <!-- cross site request forgery - hidden input field -->
                         <?= csrf_field(); ?>

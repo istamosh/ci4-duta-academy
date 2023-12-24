@@ -88,7 +88,7 @@
         }
 
         // function for processing database update
-        public function execute_update() {
+        public function executeUpdate() {
             // catch id_edit var from input->name request from update_book.php
             $id = $this->request->getVar('id_edit');
 
@@ -136,6 +136,18 @@
 
             // Add flash data information (success message) and return to book_list
             session()->setFlashdata('updates', 'Book has been successfully updated!');
+            return redirect()->to('/book');
+        }
+
+        public function delete() {
+            // triggered from delete button on book_list.php
+            $id = $this->request->getVar('id_for_deletion');
+            
+            // call the database function and delete the entry by their respective ids
+            $this->databaseModel->delete($id);
+
+            // one-time popup while redirected back to /book
+            session()->setFlashdata('updated', 'Book successfully deleted.');
             return redirect()->to('/book');
         }
     }
