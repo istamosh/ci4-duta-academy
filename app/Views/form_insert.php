@@ -28,7 +28,12 @@
 
                     <!-- /book/save will be routed to Book.php->save() -->
                     <!-- added input encryption type -->
-                    <form class="needs-validation" action="/book/save" method="post" enctype="multipart/form-data">
+                    <form 
+                        class="needs-validation" 
+                        action="<?= base_url('create-book') ?>" 
+                        method="post" 
+                        enctype="multipart/form-data"
+                    >
                         <!-- cross site request forgery - hidden input field -->
                         <?= csrf_field(); ?>
 
@@ -119,7 +124,7 @@
                                     id="id_book_cover"
                                     value=""
                                     required
-                                >
+                                />
 
                                 <!-- feedback from corresponding form -->
                                 <div id="book_coverFeedback" class="invalid-feedback">

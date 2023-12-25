@@ -37,51 +37,58 @@
         // for inserting new book into db
         public function save() {
 
-            $validationRule =
+            $validationRules =
             [
                 'title' => 'required|is_unique[books.title]',
                 'author' => 'required',
                 'publisher' => 'required',
                 'total_pages' => 'required|is_natural_no_zero'
-                ,'book_cover' =>
-                [
-                    'rules' => 'uploaded[book_cover]|is_image[book_cover]|max_size[book_cover,1024]|max_dims[book_cover,4096,4096]|mime_in[book_cover,image/jpg,image/jpeg,image/png]|ext_in[book_cover,jpg,jpeg,png]'
-                ]
+                // ,'book_cover' =>
+                // [
+                //     'rules' => 'uploaded[book_cover]|is_image[book_cover]|max_size[book_cover,1024]|max_dims[book_cover,4096,4096]|mime_in[book_cover,image/jpg,image/jpeg,image/png]|ext_in[book_cover,jpg,jpeg,png]'
+                // ]
             ];
 
-            // need to validate datas before inserting into db to prevent error on db
+            // validate datas before inserting into db to prevent error on db
             // book title is unique tag, no two or more entry can be the same
             // if it is not fulfilled
-            if (!$this->validate($validationRule)) {
-                // one-time error message
-                session()->setFlashdata('error', 'Save error, make sure there are no empty field, zero page, or duplicate title!');
+            if (!$this->validate($validationRules)) {
                 // then return back to form with latest input values (must be defined inside input form too)
-                return redirect()->to('/book/new')->withInput();
-            };
+                return redirect()->
+                    to('/book/new')->
+                    withInput()->
+                    with('error', 'Save error, make sure there are no empty field, zero page, or duplicate title!');
+            }
 
-            // fetch image file entry (blob)
-            $fileUpload = $this->request->getFile('book_cover');
-            // and generate random name for uploaded file
-            $randomName = $fileUpload->getRandomName();
-            // and then move to /public/blob_images dir (excluded for different machines because of local db)
-            $fileUpload->move('blob_images', $randomName);
+            // fetch image file entry
+            $uploadedFile = $this->request->getFile('book_cover');
+            // check file if it's uploaded successfully and not moved yet
+            // note: if this fails, image file will return NULL, make sure the db image field allows NULL
+            if ($uploadedFile->isValid() && !$uploadedFile->hasMoved()) {
+                // and generate random name for uploaded file
+                $randomName = $uploadedFile->getRandomName();
+                // move to blob_images/ dir. with randomized name
+                $uploadedFile->move('blob_images/', $randomName);
+            }
 
             // using CI4 base model save function with Key Value Pair array into our custom database model
             // while book_cover save only the file name
-            $this->databaseModel->save(
-                [
-                    'title' => $this->request->getVar('title'),
-                    'author' => $this->request->getVar('author'),
-                    'publisher' => $this->request->getVar('publisher'),
-                    'total_pages' => $this->request->getVar('total_pages'),
-                    'book_cover' => $randomName
-                ]
-            );
+            // namefield_on_database => getPost(namefield_on_form_insert)
+            $dataQuery = [
+                'title' => $this->request->getPost('title'),
+                'author' => $this->request->getPost('author'),
+                'publisher' => $this->request->getPost('publisher'),
+                'total_pages' => $this->request->getPost('total_pages'),
+                'book_cover' => $randomName
+            ];
+            // save into db using constructed database model
+            $this->databaseModel->save($dataQuery);
 
             // display one-time message that KVP array above has been inputted. will transferred to redirect() below this
-            session()->setFlashdata('message', 'Book has been successfully saved!');
             // after saving will redirect to localhost/index.php/book page (same as localhost/book)
-            return redirect()->to('/book/save')->withInput();
+            return redirect()->
+                to('/book')->
+                with('success', 'Book has been successfully saved!');
         }
 
         // catch the edit id for updating book purpose
@@ -153,6 +160,7 @@
             return redirect()->to('/book');
         }
 
+        // delete entry from database function
         public function delete() {
             // triggered from delete button on book_list.php
             $id = $this->request->getVar('id_for_deletion');
@@ -161,8 +169,9 @@
             $this->databaseModel->delete($id);
 
             // one-time popup while redirected back to /book
-            session()->setFlashdata('updated', 'Book successfully deleted.');
-            return redirect()->to('/book');
+            return redirect()->
+                to('/book')->
+                with('update', 'Book successfully deleted.');
         }
     }
     // custom controllers for books

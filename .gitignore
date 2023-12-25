@@ -133,4 +133,4 @@ nb-configuration.xml
 
 # Database blob images (the folder itself and one empty file inside it are excluded)
 /public/blob_images/*
-!/public/blob_images/index
+!/public/blob_images/images-will-be-placed-here

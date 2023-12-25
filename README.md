@@ -97,7 +97,7 @@ CREATE TABLE `books` (
     `author` VARCHAR(100) NOT NULL , 
     `publisher` VARCHAR(100) NOT NULL , 
     `total_pages` INT NOT NULL , 
-    `book_cover` VARCHAR(50) NOT NULL , 
+    `book_cover` VARCHAR(50) , 
     `created_at` DATETIME NOT NULL , 
     `updated_at` DATETIME NOT NULL , 
     PRIMARY KEY (`id`)

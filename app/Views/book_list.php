@@ -7,18 +7,18 @@
 <?= $this->section('content') ?>
 
 <?php
-if (session()->getFlashdata('message')):
+if (session()->getFlashdata('success')):
 ?>
     <div class="alert alert-success" role="alert">
-        <!-- invoke this created book alert message from Book.php -->
-        <?= session()->getFlashdata('message')?>
+        <!-- invoke this created book alert success message from Book.php -->
+        <?= session()->getFlashdata('success')?>
     </div>
 <?php 
-elseif (session()->getFlashdata('updates')):
+elseif (session()->getFlashdata('update')):
 ?>
     <div class="alert alert-info" role="alert">
         <!-- invoke this updated book alert message from Book.php -->
-        <?= session()->getFlashdata('updates')?>
+        <?= session()->getFlashdata('update')?>
     </div>
 <?php
 endif;
@@ -80,7 +80,7 @@ endif;
                                 </form>
 
                                 <!-- delete button -->
-                                <form action="/book/delete" method="post" class="inline-data">
+                                <form action="<?= base_url('delete-book')?>" method="post" class="inline-data">
                                     <?= csrf_field() ?>
                                     <input 
                                         type="hidden" 
