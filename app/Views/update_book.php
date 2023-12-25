@@ -17,8 +17,8 @@
     <?php
     endif;
 
-    // // (debugging purpose) catch the bookDetails var. from Book.php
-    // print_r($bookDetails);
+    // // (debugging purpose) catch the current book details var. from Book.php
+    // print_r($currentDetails);
     ?>
 
     <div class="row">
@@ -29,8 +29,13 @@
                 <div class="card-body">
                     <h4 class="card-title">Update Book</h4>
 
-                    <!-- /book/execute_update will be routed to Book.php->executeUpdate() -->
-                    <form class="needs-validation" action="/book/execute_update" method="post">
+                    <!-- update action will be routed to Book.php->executeUpdate() -->
+                    <form 
+                        class="needs-validation" 
+                        action="<?= base_url('update-book') ?>" 
+                        method="post" 
+                        enctype="multipart/form-data"
+                    >
                         <!-- cross site request forgery - hidden input field -->
                         <?= csrf_field(); ?>
 
@@ -45,7 +50,7 @@
                                     class="form-control <?= ($validation->hasError('title')) ? 'is-invalid' : ''; ?>" 
                                     name="title" 
                                     id="id_title" 
-                                    value="<?= old("title") ? old('title') : $bookDetails['title']; ?>"
+                                    value="<?= old("title") ? old('title') : $currentDetails['title']; ?>"
                                     autofocus
                                     required
                                 >
@@ -64,7 +69,7 @@
                                     class="form-control <?= ($validation->hasError('author')) ? 'is-invalid' : ''; ?>" 
                                     name="author" 
                                     id="id_author"
-                                    value="<?= old("author") ? old('author') : $bookDetails['author']; ?>"
+                                    value="<?= old("author") ? old('author') : $currentDetails['author']; ?>"
                                     required
                                 >
 
@@ -82,7 +87,7 @@
                                     class="form-control <?= ($validation->hasError('publisher')) ? 'is-invalid' : ''; ?>" 
                                     name="publisher" 
                                     id="id_publisher"
-                                    value="<?= old("publisher") ? old("publisher") : $bookDetails['publisher']; ?>"
+                                    value="<?= old("publisher") ? old("publisher") : $currentDetails['publisher']; ?>"
                                     required
                                 >
 
@@ -100,7 +105,7 @@
                                     class="form-control <?= ($validation->hasError('total_pages')) ? 'is-invalid' : ''; ?>" 
                                     name="total_pages" 
                                     id="id_total_pages"
-                                    value="<?= old("total_pages") ? old("total_pages") : $bookDetails['total_pages']; ?>"
+                                    value="<?= old("total_pages") ? old("total_pages") : $currentDetails['total_pages']; ?>"
                                     required
                                 >
 
@@ -114,13 +119,13 @@
                             <label for="book_cover" class="col-sm-2 col-form-label">Book Cover</label>
                             <div class="col-sm-10">
                                 <input 
-                                    type="text" 
+                                    type="file" 
                                     class="form-control <?= ($validation->hasError('book_cover')) ? 'is-invalid' : ''; ?>" 
                                     name="book_cover" 
                                     id="id_book_cover"
-                                    value="<?= old("book_cover") ? old('book_cover') : $bookDetails['book_cover']; ?>"
+                                    value="<?= old("book_cover") ? old('book_cover') : $currentDetails['book_cover']; ?>"
                                     required
-                                >
+                                />
 
                                 <!-- feedback from corresponding form -->
                                 <div id="book_coverFeedback" class="invalid-feedback">
@@ -129,12 +134,31 @@
                             </div>
                         </div>
 
+                        <!-- this shows current image -->
+                        <div class="row mb-3">
+                            <label for="book_cover" class="col-sm-2 col-form-label">Current Book Cover</label>
+                            <div class="col-sm-3">
+                                <img
+                                    src="/blob_images/<?= $currentDetails['book_cover'] ?>" 
+                                    alt="image" 
+                                    class="img-thumbnail"
+                                    width="100px"
+                                />
+                            </div>
+                        </div>
+
+                        <!-- prepare the current cover for removal -->
+                        <input 
+                            type="hidden" 
+                            name="old_cover" 
+                            value="<?= $currentDetails['book_cover']; ?>"
+                        />
                         <!-- submit with input id as attachment pointer -->
                         <input 
                             type="hidden" 
                             name="id_edit" 
-                            value="<?= $bookDetails['id']; ?>"
-                        >
+                            value="<?= $currentDetails['id']; ?>"
+                        />
                         <button id="button" type="submit" class="btn btn-primary">Update Book Data</button>
                     </form>
                 </div>
@@ -146,7 +170,7 @@
         // store all desired class into one variable
         // check forms for every typing inside either one of them
         // if any form is not invalid, disable button and validate forms with error output for every forms available
-        document.getElementById("button").disabled = true;
+        //document.getElementById("button").disabled = true;
         (function(){
             'use strict';
             const forms = document.querySelectorAll('.needs-validation');

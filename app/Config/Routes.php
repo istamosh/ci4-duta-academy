@@ -21,12 +21,12 @@ $routes->add('book', 'Book');
 $routes->add('home', 'Home');
 $routes->add('/book/new', 'Book::formInsert');
 // adding edit book routes derived from book_list.php
-$routes->add('/book/edit', 'Book::update');
-// adding database updating process (from update_book.php)
-$routes->add('/book/execute_update', 'Book::executeUpdate');
+$routes->add('/book/edit', 'Book::formEdit');
 
 // CRUD operations
 // derived from form_insert.php
 $routes->post('create-book', 'Book::save');
+// derived from update_book.php
+$routes->post('update-book', 'Book::update');
 // from book_list.php
 $routes->post('delete-book', 'Book::delete');

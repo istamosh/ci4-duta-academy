@@ -86,7 +86,13 @@ endif;
                                         type="hidden" 
                                         name="id_for_deletion"
                                         value="<?= $data['id'] ?>"
-                                    >
+                                    />
+                                    <!-- prepare corresponding image for deletion -->
+                                    <input 
+                                        type="hidden" 
+                                        name="cover_for_deletion"
+                                        value="<?= $data['book_cover'] ?>"
+                                    />
                                     <button
                                         type="submit"
                                         class="btn btn-danger"

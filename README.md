@@ -1,4 +1,4 @@
-# Training PHP CodeIgniter4 Readme
+# Training PHP CodeIgniter4 Readme and Deployment Guide
 
 Application requirements:
 - XAMPP
